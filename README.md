@@ -1,12 +1,12 @@
-# schematics [WIP]
-### An API standard for unicorns
+# schematics
+### A front-end friendly REST API standard
 
 ![](http://data.whicdn.com/images/72152445/large.gif)
 
 ## What is it?
-An API design standard to make it clear in one glimpse what an API can do.
+An API design standard to make it clear in one glimpse what an API can do and how to use it. The most important piece of this are the [Schema's](#schemas). Schema's are basically small JSON blobs you add to your reponse to help people see in one glimpse what your API can do and how they can use it.
 
-## Schema's
+## Whats a Schema?
 
 #### What it looks like
 ```json
