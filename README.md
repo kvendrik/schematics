@@ -11,7 +11,7 @@ An API design standard to make it clear in one glimpse what an API can do and ho
 #### What it looks like
 Some examples:
 
-`GET api.yourdomain.com`<br>
+`GET https://api.yourdomain.com`<br>
 The root contains the initial schema.
 ```json
 {
@@ -33,7 +33,7 @@ The root contains the initial schema.
 }
 ```
 
-`GET api.yourdomain.com/repos/babel`<br>
+`GET https://api.yourdomain.com/repos/babel`<br>
 When you request one of the endpoints in the initial schema the API tells you where you can go from there by
 providing you with a new schema object.
 ```json
