@@ -9,6 +9,10 @@ An API design standard to make it clear in one glimpse what an API can do and ho
 ## Schema's
 
 #### What it looks like
+Some examples:
+
+`GET api.yourdomain.com`
+The root contains the initial schema.
 ```json
 {
     "$schema": {
@@ -24,7 +28,29 @@ An API design standard to make it clear in one glimpse what an API can do and ho
             },
             "get": "https://api.github.com/events"
         },
-        "repos": "http://kvendrik.github.io/schematicsjs/examples/schema-repos.json"
+        "repos": "https://api.github.com/repos{/orgName}"
+    }
+}
+```
+
+`GET api.yourdomain.com/repos/babel`
+When you request one of the endpoints in the initial schema the API tells you where you can go from there by
+providing you with a new schema object.
+```
+{
+    "data": [
+        {
+            "id": 24560307,
+            "name": "babel",
+            "fullName": "babel/babel",
+            "private": false,
+            "htmlUrl": "https://github.com/babel/babel",
+            "description": "Babel is a compiler for writing next generation JavaScript."
+        }
+    ],
+    "$schema": {
+        "issues": "https://api.github.com/repos/babel/{repoName}/issues{/id}",
+        "tags": "https://api.github.com/repos/babel/{repoName}/tags"
     }
 }
 ```
