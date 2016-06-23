@@ -1,5 +1,5 @@
 # schematics [WIP]
-### A front-end friendly REST API standard
+### A front-end friendly REST API standard experiment
 
 ![](http://data.whicdn.com/images/72152445/large.gif)
 
