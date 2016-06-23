@@ -36,7 +36,7 @@ The root contains the initial schema.
 `GET api.yourdomain.com/repos/babel`
 When you request one of the endpoints in the initial schema the API tells you where you can go from there by
 providing you with a new schema object.
-```
+```json
 {
     "data": [
         {
