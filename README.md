@@ -1,4 +1,4 @@
-# schematics
+# schematics [WIP]
 ### A front-end friendly REST API standard
 
 ![](http://data.whicdn.com/images/72152445/large.gif)
