@@ -21,7 +21,7 @@ The root contains the initial schema.
         "events": {
             "post": {
                 "href": "https://api.github.com/events",
-                "params": {
+                "body": {
                     "name": "String",
                     "date": { "type": "String", "optional": true }
                 }
@@ -67,7 +67,7 @@ Some things you might find useful to know:
 * `POST`, `PUT` & `DELETE`
     * These all require a details object
     * This should contain a `href` String and optionally a `params` object
-    * Params
+    * Body
         * An object with the properties that should go into the request body
         * As key you specify the name of the parameter
         * As value you specify the data type the property should be
