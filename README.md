@@ -15,18 +15,25 @@ Some examples:
 The root contains the initial schema.
 ```json
 {
-    "$schema": {
+    "$schematics": {
         "users": "https://api.github.com/users{/username}{?limit,offset}",
         "emojis": "https://api.github.com/emojis",
         "events": {
+            "href": "https://api.github.com/events{?limit,offset}",
             "post": {
-                "href": "https://api.github.com/events",
-                "body": {
-                    "name": "String",
-                    "date": { "type": "String", "optional": true }
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "required": true
+                    },
+                    "date": {
+                        "type": "string",
+                        "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(.[^Z]+)?Z"
+                    }
                 }
             },
-            "get": "https://api.github.com/events"
+            "get": null
         },
         "repos": "https://api.github.com/repos{/orgName}"
     }
@@ -48,7 +55,7 @@ providing you with a new schema object.
             "description": "Babel is a compiler for writing next generation JavaScript."
         }
     ],
-    "$schema": {
+    "$schematics": {
         "issues": "https://api.github.com/repos/babel/{repoName}/issues{/id}",
         "tags": "https://api.github.com/repos/babel/{repoName}/tags"
     }
@@ -58,18 +65,15 @@ providing you with a new schema object.
 ### Creating your own
 Some things you might find useful to know:
 
-* `GET`
-    * A details object with a `href` is optional
+* URLs
+    * URL templates are [`RFC6570`](https://help.apiary.io/api_101/uri-templates/)
     * Queries can be defined with just their key e.g. `{?offset&limit}`
     * Queries are always optional
     * Optional parameters can be defined using brackets e.g. `{/username}`
     * Required parameters can be defined using brackets e.g. `/{username}`
-* `POST`, `PUT` & `DELETE`
-    * These all require a details object
-    * This should contain a `href` String and optionally a `params` object
-    * Body
-        * An object with the properties that should go into the request body
-        * As key you specify the name of the parameter
-        * As value you specify the data type the property should be
-        * These properties are required by default
-        * If you would like to make a property optional define a details object instead of the data type string e.g. `{ "type": "String", "optional": true }`
+* Collections
+    * When only a string is specified the request type is `GET`
+    * Can have a collection object with different request types
+        * `POST`, `PUT` & `DELETE`
+            * These optionally have an object with the properties that should/can go into the request body
+            * This object is a [JSON schema](http://json-schema.org/)
